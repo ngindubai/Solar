@@ -264,7 +264,7 @@ function leadFormHTML(uid, summary) {
   return `
   <div class="form-card">
     <h3>Get this estimate verified with a free site survey</h3>
-    <p class="form-note">Leave your details and an engineer will email your tailored figures. No phone calls — we work by email.</p>
+    <p class="form-note">Leave your details and an engineer will email your tailored figures. No calls — we work by email.</p>
     <form action="${FORM_ENDPOINT}" method="POST">
       <input type="hidden" name="_subject" value="New solar lead — Calculator estimate">
       <input type="hidden" name="_template" value="table">
