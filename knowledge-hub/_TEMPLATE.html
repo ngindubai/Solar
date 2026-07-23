@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--
   ============================================================================
-  KNOWLEDGE HUB ARTICLE TEMPLATE — {{BRAND_NAME}}
+  KNOWLEDGE HUB ARTICLE TEMPLATE for {{BRAND_NAME}}
   ============================================================================
   HOW TO USE (automated SEO programme, read carefully):
 
@@ -14,7 +14,7 @@
      Business Solar · Rules & DEWA
   4. In the SAME change: add the article to sitemap.xml (with <lastmod>)
      and link it from /knowledge-hub/index.html. (CLAUDE.md rule 10.)
-  5. BINDING RULES — re-read before publishing:
+  5. BINDING RULES (re-read before publishing):
      - SEO-RULES.md #4: no near-duplicate pages. If an article already
        targets the same primary query, UPDATE it instead.
      - SEO-RULES.md #5: no location-permutation doorway pages.
@@ -23,13 +23,13 @@
        internal links to /free-solar-ppa/, /buy-solar/ or /calculator/
        with varied, descriptive anchors.
      - SEO-RULES.md #20: the standard CTA block at the end stays.
-     - CLAUDE.md rule 1: contact is web forms + email ONLY — never add
+     - CLAUDE.md rule 1: contact is web forms + email ONLY; never add
        any other contact channel or number, in copy or schema.
      - CLAUDE.md rule 4: no fabricated statistics, testimonials or claims.
      - CLAUDE.md rule 5: any savings figure sits near the estimate
        disclaimer.
      - CLAUDE.md rule 6: tariff figures come from CONFIG in
-       /assets/js/calculator.js — wrap them in <span data-tariff="…">
+       /assets/js/calculator.js; wrap them in <span data-tariff="…">
        so they re-render if CONFIG changes.
   6. Word count target: 900–1,400 words of genuinely useful, Dubai-specific
      content. Include at least one element only we can provide: a worked
@@ -61,7 +61,7 @@
   <link rel="stylesheet" href="/assets/css/main.css">
   <script defer src="/assets/js/calculator.js"></script>
   <script defer src="/assets/js/main.js"></script>
-  <!-- ANALYTICS SLOT — add approved analytics snippet here; nothing live by default -->
+  <!-- ANALYTICS SLOT: add approved analytics snippet here; nothing live by default -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -70,7 +70,7 @@
     "name": "{{BRAND_NAME}}",
     "url": "{{DOMAIN}}/",
     "email": "garethsomers@outlook.com",
-    "description": "Solar PV and battery storage installation for Dubai homes and businesses — free solar under a PPA or purchased systems, connected under DEWA's Shams Dubai programme.",
+    "description": "Solar PV and battery storage installation for Dubai homes and businesses: free solar under a PPA or purchased systems, connected under DEWA's Shams Dubai programme.",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Unit 20, Prime Tower, Business Bay",
@@ -111,11 +111,11 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- SHARED HEADER — keep byte-identical with every other page -->
+  <!-- SHARED HEADER: keep byte-identical with every other page -->
   <header class="site-header">
     <div class="wrap">
-      <a class="brand" href="/" aria-label="{{BRAND_NAME}} — home">
-        <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="20" r="12" fill="currentColor"/><path d="M32 38 v4 c0 9 -13 7 -13 18 M32 42 c0 9 13 7 13 18" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/></svg>
+      <a class="brand" href="/" aria-label="{{BRAND_NAME}} home page">
+        <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="20" r="11" fill="var(--clr-sun)" stroke="currentColor" stroke-width="4"/><path d="M32 38 v4 c0 9 -13 7 -13 18 M32 42 c0 9 13 7 13 18" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/></svg>
         {{BRAND_NAME}}
       </a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
@@ -175,17 +175,17 @@
                  placed where they genuinely help.
                - Any savings figure must sit near this disclaimer line
                  (keep it verbatim):
-                 <p><em>Figures are estimates, not a quote — final numbers
+                 <p><em>Figures are estimates, not a quote. Final numbers
                  depend on a site survey and DEWA approval.</em></p>
                ============================================================= -->
           [[BODY]]
 
-          <!-- STANDARD CTA BLOCK — required on every article, keep intact
+          <!-- STANDARD CTA BLOCK: required on every article, keep intact
                (SEO-RULES.md #20). Do not add a third form; link to the
                existing hero form and calculator. -->
           <div class="article-cta">
             <h2>Put your own numbers on this</h2>
-            <p>Sixty seconds with the calculator shows both routes — free solar under a PPA and buying outright — side by side, using your bill. Estimates, not quotes; the free survey firms them up.</p>
+            <p>Sixty seconds with the calculator shows both routes, free solar under a PPA and buying outright, side by side using your bill. Estimates, not quotes; the free survey firms them up.</p>
             <div class="btn-row">
               <a class="btn btn-primary" href="/#estimate">Get my free savings estimate</a>
               <a class="btn btn-ghost" href="/calculator/">Run the savings calculator</a>
@@ -196,12 +196,12 @@
     </article>
   </main>
 
-  <!-- SHARED FOOTER — keep byte-identical with every other page -->
+  <!-- SHARED FOOTER: keep byte-identical with every other page -->
   <footer class="site-footer">
     <div class="wrap">
       <div class="footer-grid">
         <div>
-          <p class="footer-brand"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="20" r="12" fill="currentColor"/><path d="M32 38 v4 c0 9 -13 7 -13 18 M32 42 c0 9 13 7 13 18" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/></svg>{{BRAND_NAME}}</p>
+          <p class="footer-brand"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="20" r="11" fill="var(--clr-sun)" stroke="currentColor" stroke-width="4"/><path d="M32 38 v4 c0 9 -13 7 -13 18 M32 42 c0 9 13 7 13 18" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/></svg>{{BRAND_NAME}}</p>
           <p>Solar PV and battery storage for Dubai homes and businesses.<br>Unit 20, Prime Tower, Business Bay, Dubai, UAE.</p>
           <p><a href="mailto:garethsomers@outlook.com">garethsomers@outlook.com</a></p>
           <p>We work by web form and email.</p>

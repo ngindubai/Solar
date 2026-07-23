@@ -1,7 +1,7 @@
 /* ==========================================================================
-   {{BRAND_NAME}} — main.css
+   {{BRAND_NAME}} - main.css
    Monochrome design system. Black ink on white paper, predominantly white.
-   Signature element: the thick black "journey line" — it runs off the hero,
+   Signature element: the thick black "journey line" - it runs off the hero,
    forks into the Free Solar (PPA) and Buy Solar paths, and recurs as rules,
    list markers and the band meter throughout the site.
    All tokens live here. Do not introduce new hex values elsewhere.
@@ -17,12 +17,19 @@
   --line-hair: #e4e4e0;
   --line-mid: #cfcfca;
 
-  /* DEWA band ramp — monochrome. Bands keep their official names
+  /* DEWA band ramp, monochrome. Bands keep their official names
      (Green/Yellow/Orange/Red) as text labels; tone darkens as fils rise. */
   --band-1: #dcdcd7;   /* Green band  23 fils */
   --band-2: #a9a9a2;   /* Yellow band 28 fils */
   --band-3: #5e5e58;   /* Orange band 32 fils */
   --band-4: #0d0d0d;   /* Red band    38 fils */
+
+  /* Accent colour: Dubai sun and panel blue. Used sparingly on the sun
+     mark, kicker bars, illustrations and the featured PPA result card. */
+  --clr-sun: #f4b942;
+  --clr-sun-soft: #fcf0d4;
+  --clr-panel: #34688a;
+  --clr-panel-soft: #d9e7f0;
 
   /* Type */
   --font-sans: "Helvetica Neue", "Arial Nova", Inter, Roboto, "Segoe UI", Arial, ui-sans-serif, system-ui, sans-serif;
@@ -299,9 +306,12 @@ a:hover { text-decoration-thickness: 3px; }
   content: "";
   width: 2.2rem;
   height: var(--stroke);
-  background: var(--ink);
+  background: var(--clr-sun);
   border-radius: 2px;
 }
+
+.hero-illo { margin-top: var(--sp-5); max-width: 30rem; }
+.illo { width: 100%; height: auto; }
 
 .hero h1 { margin-bottom: var(--sp-4); }
 
@@ -385,7 +395,7 @@ a:hover { text-decoration-thickness: 3px; }
 .form-extra[hidden] { display: none; }
 
 /* --------------------------------------------------------------------------
-   Journey / fork — the scroll-driven line section
+   Journey / fork - the scroll-driven line section
    -------------------------------------------------------------------------- */
 .journey {
   position: relative;
@@ -456,7 +466,8 @@ a:hover { text-decoration-thickness: 3px; }
   width: 0.85rem;
   height: 0.85rem;
   border-radius: 50%;
-  background: var(--ink);
+  background: var(--clr-sun);
+  border: 3px solid var(--ink);
 }
 .path-label.is-hollow::before {
   background: var(--paper);
@@ -498,21 +509,44 @@ a:hover { text-decoration-thickness: 3px; }
   margin-bottom: var(--sp-4);
 }
 
-/* Caption pill that sits ON the merged line like a node */
-.journey-caption {
-  max-width: none;
-  text-align: center;
+/* Centerpiece: where both journey lines finally land. Holds the
+   calculator. The merged line flows into the sun node on its top edge. */
+.centerpiece {
+  position: relative;
   margin-top: var(--sp-7);
-}
-.journey-caption span {
-  display: inline-block;
   background: var(--paper);
-  border: 1.5px solid var(--line-mid);
-  border-radius: var(--radius-pill);
-  padding: 0.75rem 1.5rem;
-  font-size: var(--step--1);
-  color: var(--ink-soft);
+  border: 3px solid var(--ink);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 2px 4px rgba(13,13,13,0.06), 0 28px 64px -24px rgba(13,13,13,0.28);
+  padding: clamp(1.5rem, 4vw, 3.5rem);
 }
+.centerpiece::before {
+  content: "";
+  position: absolute;
+  top: -1.05rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 50%;
+  background: var(--clr-sun);
+  border: 4px solid var(--ink);
+}
+.centerpiece-head {
+  text-align: center;
+  max-width: 44rem;
+  margin: 0 auto var(--sp-5);
+}
+.centerpiece-head h2 {
+  font-size: var(--step-4);
+  margin: var(--sp-3) 0;
+}
+.centerpiece-head p {
+  color: var(--ink-soft);
+  font-size: var(--step-1);
+  margin-inline: auto;
+}
+.centerpiece .calc { border-width: 2px; box-shadow: none; }
 
 /* Scroll reveal */
 .reveal {
@@ -557,7 +591,7 @@ a:hover { text-decoration-thickness: 3px; }
   content: "";
   width: 2.2rem;
   height: var(--stroke);
-  background: currentColor;
+  background: var(--clr-sun);
   border-radius: 2px;
 }
 
@@ -724,6 +758,9 @@ a:hover { text-decoration-thickness: 3px; }
 .calc-body { padding: clamp(1.25rem, 3vw, 2rem); }
 .calc-inputs { display: grid; gap: var(--sp-3); }
 @media (min-width: 700px) { .calc-inputs { grid-template-columns: 1fr 1fr; align-items: end; } .calc-inputs .field-full { grid-column: 1 / -1; } }
+/* The hidden attribute must beat the grid display above, or the Business
+   inputs leak into Home mode and vice versa. */
+.calc-inputs[hidden] { display: none !important; }
 
 .calc-results { border-top: 1px solid var(--line-hair); padding: clamp(1.25rem, 3vw, 2rem); }
 .calc-results[hidden] { display: none; }
@@ -732,7 +769,7 @@ a:hover { text-decoration-thickness: 3px; }
 @media (min-width: 800px) { .result-cards { grid-template-columns: 1fr 1fr; } }
 
 .result-card { border: 1px solid var(--line-hair); border-radius: var(--radius-lg); padding: clamp(1.25rem, 2.5vw, 1.75rem); }
-.result-card.is-featured { border: 2px solid var(--ink); }
+.result-card.is-featured { border: 2px solid var(--ink); background: var(--clr-sun-soft); }
 .result-card h4 { margin-bottom: var(--sp-1); }
 .result-card .result-tag { font-size: var(--step--1); font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-mute); margin-bottom: var(--sp-3); }
 .result-figure { font-size: var(--step-3); font-weight: 800; letter-spacing: var(--track-display); line-height: 1.05; }
@@ -906,7 +943,7 @@ hr.rule {
 }
 
 /* --------------------------------------------------------------------------
-   Print — people print calculator estimates
+   Print - people print calculator estimates
    -------------------------------------------------------------------------- */
 @media print {
   .site-header, .site-footer, .sticky-cta, .site-nav, .btn, form, .journey-lines { display: none !important; }

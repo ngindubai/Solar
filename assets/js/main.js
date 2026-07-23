@@ -1,5 +1,5 @@
 /* ==========================================================================
-   {{BRAND_NAME}} — main.js
+   {{BRAND_NAME}} - main.js
    Navigation, sticky CTA, form validation, scroll reveals, and the
    signature journey-line animation: two thick lines run off the hero as
    you scroll, one leading to Free Solar (PPA), the other to Buy Solar,
@@ -147,7 +147,7 @@
   }
 
   /* ------------------------------------------------------------------
-     Journey lines — the fork
+     Journey lines - the fork
      ------------------------------------------------------------------
      A scope element [data-journey-scope] wraps the hero and the fork
      section. An SVG is laid over it. Path geometry is computed from the
@@ -171,6 +171,7 @@
     if (!svg || !startEl || !freeEl || !buyEl || !endEl) return;
 
     var paths = [];
+    var endRelTop = 0;
 
     function rel(el) {
       var s = scope.getBoundingClientRect();
@@ -196,6 +197,7 @@
       var free = rel(freeEl);
       var buy = rel(buyEl);
       var end = rel(endEl);
+      endRelTop = end.top;
       var isStacked = free.top < buy.top - 40 && Math.abs(free.cx - buy.cx) < 60;
 
       var sx = start.cx;
@@ -230,8 +232,8 @@
         );
         d.push("M" + mx + " " + mergeY + " L " + end.cx + " " + end.top);
       } else {
-        /* Stacked (mobile): both lines swing into the page gutters early —
-           clear of the centred text — then curve into their cards. Line A
+        /* Stacked (mobile): both lines swing into the page gutters early -
+           clear of the centred text - then curve into their cards. Line A
            takes the left gutter into card one; line B takes the right
            gutter past card one and into card two. */
         var leftG = Math.max(6, free.left - 14);
@@ -278,9 +280,9 @@
     /* Draw order: [0,1] fork · [2,3] merge · [4] tail.
        Each group maps to a slice of the overall scroll progress. */
     var groups = [
-      { idx: [0, 1], from: 0.0, to: 0.55 },
-      { idx: [2, 3], from: 0.55, to: 0.85 },
-      { idx: [4], from: 0.85, to: 1.0 }
+      { idx: [0, 1], from: 0.0, to: 0.5 },
+      { idx: [2, 3], from: 0.5, to: 0.82 },
+      { idx: [4], from: 0.82, to: 1.0 }
     ];
 
     var ticking = false;
@@ -288,11 +290,12 @@
       ticking = false;
       var rect = scope.getBoundingClientRect();
       var vh = window.innerHeight;
-      /* Progress: 0 with the page unscrolled, 1 when the scope bottom
-         sits comfortably above the fold — so the fork finishes drawing
-         just as the second card settles into view. */
+      /* Progress: 0 with the page unscrolled, 1 when the line-end marker
+         (the centerpiece's top edge) sits just past mid-viewport - so the
+         merged line lands on the centerpiece exactly as it comes into
+         view. */
       var scopeTop = rect.top + window.scrollY;
-      var denom = Math.max(200, scopeTop + rect.height - vh * 0.6);
+      var denom = Math.max(200, scopeTop + endRelTop - vh * 0.55);
       var p = window.scrollY / denom;
       p = Math.max(0, Math.min(1, p));
 

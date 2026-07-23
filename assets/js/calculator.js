@@ -1,5 +1,5 @@
 /* ==========================================================================
-   {{BRAND_NAME}} — calculator.js
+   {{BRAND_NAME}} - calculator.js
    DEWA savings calculator. Vanilla JS, no dependencies, no persistence.
    Mounts into every element with [data-calc]. Two modes: Home | Business.
 
@@ -31,7 +31,7 @@ const CONFIG = {
   commercialRoofKWpPerSqFt: 1 / 90 // roof-limited sizing check for warehouses
 };
 
-/* Residential monthly consumption lookup (kWh) — optimistic, AC-driven Dubai
+/* Residential monthly consumption lookup (kWh) - optimistic, AC-driven Dubai
    usage. Rows: bedrooms. null = combination not offered (apartments cap at 4BR). */
 const HOME_KWH = {
   apartment:  { 2: 1100, 3: 1500, 4: 1900, 5: null, 6: null, 7: null },
@@ -42,7 +42,7 @@ const HOME_KWH = {
 /* --------------------------------------------------------------------------
    Band engine
    --------------------------------------------------------------------------
-   Worked-example check (run mentally or in console — must hold before deploy):
+   Worked-example check (run mentally or in console - must hold before deploy):
      billAED(3000, CONFIG.residentialSlabs)
        = 2000×0.23 + 1000×0.28 + 3000×0.06  = 460 + 280 + 180 = AED 920/month
      4-bed detached villa → 3,000 kWh/mo → 36,000 kWh/yr
@@ -73,7 +73,7 @@ function billAED(kWh, slabs) {
 
 /** Marginal saving: solar wipes out the MOST EXPENSIVE kWh first, so the
     saving is the difference between the full bill and the bill with the
-    offset removed — top band down. */
+    offset removed - top band down. */
 function marginalSavings(kWhConsumption, kWhOffset, slabs) {
   const offset = Math.min(kWhOffset, kWhConsumption);
   return billAED(kWhConsumption, slabs) - billAED(kWhConsumption - offset, slabs);
@@ -90,7 +90,7 @@ function bandFor(kWh, slabs) {
 }
 
 /** Numerically invert billAED: given a monthly AED bill, find the kWh that
-    produces it (binary search — the bill function is monotonic). */
+    produces it (binary search - the bill function is monotonic). */
 function kWhFromBill(bill, slabs) {
   if (bill <= 0) return 0;
   let lo = 0;
@@ -146,7 +146,7 @@ function estimateFromMonthlyKWh(kWhMonth, slabs, capexPerKWp, roofCapKWp) {
   const monthlySaving = marginalSavings(kWhMonth, solarKWhMonth, slabs);
   const annualSaving = monthlySaving * 12;
 
-  /* PPA maths — derivation:
+  /* PPA maths - derivation:
        blendedDisplacedRate = monthlySaving / solarKWhMonth   (AED per solar kWh)
        ppaRate              = blendedDisplacedRate × (1 − ppaDiscount)
        monthlySavingPPA     = monthlySaving − solarKWhMonth × ppaRate
@@ -182,6 +182,15 @@ function estimateFromMonthlyKWh(kWhMonth, slabs, capexPerKWp, roofCapKWp) {
    -------------------------------------------------------------------------- */
 const FORM_ENDPOINT = "https://formsubmit.co/garethsomers@outlook.com";
 
+/** Options for the bill picker: 50-AED increments between min and max. */
+function billOptionsHTML(min, max) {
+  let out = '<option value="">Skip this and estimate from my details above</option>';
+  for (let v = min; v <= max; v += 50) {
+    out += '<option value="' + v + '">AED ' + v.toLocaleString("en-GB") + "</option>";
+  }
+  return out;
+}
+
 function calcMarkup(uid) {
   return `
   <div class="calc-head">
@@ -214,9 +223,9 @@ function calcMarkup(uid) {
           </select>
         </div>
         <div class="field field-full">
-          <label for="${uid}-bill-h">Know your bill? Average monthly DEWA bill in AED <span class="muted">(optional)</span></label>
-          <input id="${uid}-bill-h" name="billHome" type="number" inputmode="numeric" min="0" max="1000000" step="1" placeholder="e.g. 920">
-          <p class="hint">If you enter a bill we estimate from that instead of the property profile.</p>
+          <label for="${uid}-bill-h">Know your bill? Pick your average monthly DEWA bill <span class="muted">(optional)</span></label>
+          <select id="${uid}-bill-h" name="billHome">${billOptionsHTML(200, 10000)}</select>
+          <p class="hint">If you pick a bill we estimate from that instead of the property profile.</p>
         </div>
       </div>
       <div class="calc-inputs" data-panel="business" hidden>
@@ -234,9 +243,9 @@ function calcMarkup(uid) {
           <input id="${uid}-sqft" name="sqft" type="number" inputmode="numeric" min="500" max="2000000" step="100" value="10000">
         </div>
         <div class="field field-full">
-          <label for="${uid}-bill-b">Know your bill? Average monthly DEWA bill in AED <span class="muted">(optional)</span></label>
-          <input id="${uid}-bill-b" name="billBiz" type="number" inputmode="numeric" min="0" max="10000000" step="1" placeholder="e.g. 18,000">
-          <p class="hint">If you enter a bill we estimate from that instead of the floor area.</p>
+          <label for="${uid}-bill-b">Know your bill? Pick your average monthly DEWA bill <span class="muted">(optional)</span></label>
+          <select id="${uid}-bill-b" name="billBiz">${billOptionsHTML(500, 50000)}</select>
+          <p class="hint">If you pick a bill we estimate from that instead of the floor area.</p>
         </div>
       </div>
       <p><button type="submit" class="btn btn-primary">See my savings</button></p>
@@ -248,11 +257,11 @@ function calcMarkup(uid) {
 
 function bandCallout(est, isHome) {
   const bandLabel = isHome
-    ? `DEWA’s <strong>${est.band.name} — ${est.band.fils} fils/kWh</strong>`
-    : `DEWA’s <strong>${est.band.name} — ${est.band.fils} fils/kWh</strong> commercial slab`;
+    ? `DEWA’s <strong>${est.band.name} - ${est.band.fils} fils/kWh</strong>`
+    : `DEWA’s <strong>${est.band.name} - ${est.band.fils} fils/kWh</strong> commercial slab`;
   return `
   <div class="calc-band-callout">
-    <p>Your usage of about <strong>${num(est.kWhMonth)} kWh/month</strong> puts your top units in ${bandLabel} — that is exactly the power solar eliminates first.</p>
+    <p>Your usage of about <strong>${num(est.kWhMonth)} kWh/month</strong> puts your top units in ${bandLabel}. That is exactly the power solar eliminates first.</p>
   </div>`;
 }
 
@@ -264,9 +273,9 @@ function leadFormHTML(uid, summary) {
   return `
   <div class="form-card">
     <h3>Get this estimate verified with a free site survey</h3>
-    <p class="form-note">Leave your details and an engineer will email your tailored figures. No calls — we work by email.</p>
+    <p class="form-note">Leave your details and an engineer will email your tailored figures. No calls; we work by email.</p>
     <form action="${FORM_ENDPOINT}" method="POST">
-      <input type="hidden" name="_subject" value="New solar lead — Calculator estimate">
+      <input type="hidden" name="_subject" value="New solar lead - Calculator estimate">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="false">
       <input type="hidden" name="_next" value="{{DOMAIN}}/thank-you/">
@@ -292,7 +301,7 @@ function resultsHTML(uid, est, isHome) {
     ? `<li><span>Sizing</span><span class="val">Roof-limited</span></li>`
     : "";
   const roofPara = est.roofLimited
-    ? `<p class="hint">This system is roof-limited — batteries and high-efficiency panels can close the gap. The survey will confirm usable roof area.</p>`
+    ? `<p class="hint">This system is roof-limited. Batteries and high-efficiency panels can close the gap. The survey will confirm usable roof area.</p>`
     : "";
 
   const summary = [
@@ -309,7 +318,7 @@ function resultsHTML(uid, est, isHome) {
   <h3 class="mb-4">Your two routes to a lower bill</h3>
   <div class="result-cards">
     <div class="result-card is-featured">
-      <p class="result-tag">Card A — Free Solar (PPA)</p>
+      <p class="result-tag">Card A: Free Solar (PPA)</p>
       <h4>AED 0 upfront</h4>
       <p class="result-figure">${aed(est.monthlySavingPPA)}<small>estimated saving per month, from day one</small></p>
       <ul class="result-lines">
@@ -320,7 +329,7 @@ function resultsHTML(uid, est, isHome) {
       </ul>
     </div>
     <div class="result-card">
-      <p class="result-tag">Card B — Buy your system</p>
+      <p class="result-tag">Card B: Buy your system</p>
       <h4>${est.systemKWp.toFixed(1)} kWp system</h4>
       <p class="result-figure">${aedK(est.capex)}<small>indicative turnkey price</small></p>
       <ul class="result-lines">
@@ -344,17 +353,17 @@ function apartmentHTML(uid, kWhMonth, band, monthlyBill) {
     `Consumption: ${num(kWhMonth)} kWh/month`,
     `Band: ${band.name} (${band.fils} fils/kWh)`,
     `Estimated bill: ${aed(monthlyBill)}/month`,
-    "Note: apartment — building-wide project advice requested"
+    "Note: apartment - building-wide project advice requested"
   ].join(" | ");
 
   return `
-  <h3 class="mb-4">Apartments work differently — here is your picture</h3>
+  <h3 class="mb-4">Apartments work differently. Here is your picture</h3>
   <ul class="result-lines" style="max-width:26rem">
     <li><span>Estimated usage</span><span class="val">${num(kWhMonth)} kWh/month</span></li>
     <li><span>Your top band</span><span class="val">${band.name} · ${band.fils} fils/kWh</span></li>
     <li><span>Estimated bill</span><span class="val">${aed(monthlyBill)}/month</span></li>
   </ul>
-  <div class="calc-note"><p>Apartment rooftops need building-owner approval — most of our apartment enquiries convert to a building-wide project. Leave your details and we will advise your options, including how to raise it with your owners association.</p></div>
+  <div class="calc-note"><p>Apartment rooftops need building-owner approval; most of our apartment enquiries convert to a building-wide project. Leave your details and we will advise your options, including how to raise it with your owners association.</p></div>
   ${disclaimerHTML()}
   ${leadFormHTML(uid, summary)}`;
 }
@@ -426,7 +435,7 @@ function initCalc(root) {
       const billInput = parseFloat(form.billBiz.value);
 
       let kWhMonth;
-      // Warehouses: mostly unconditioned volume — halve the consumption proxy.
+      // Warehouses: mostly unconditioned volume - halve the consumption proxy.
       const perSqFt = btype === "warehouse"
         ? CONFIG.commercialKWhPerSqFtYear / 2
         : CONFIG.commercialKWhPerSqFtYear;

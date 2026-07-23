@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="/assets/css/main.css">
   <script defer src="/assets/js/calculator.js"></script>
   <script defer src="/assets/js/main.js"></script>
-  <!-- ANALYTICS SLOT — add approved analytics snippet here; nothing live by default -->
+  <!-- ANALYTICS SLOT: add approved analytics snippet here; nothing live by default -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -29,7 +29,7 @@
     "name": "{{BRAND_NAME}}",
     "url": "{{DOMAIN}}/",
     "email": "garethsomers@outlook.com",
-    "description": "Solar PV and battery storage installation for Dubai homes and businesses — free solar under a PPA or purchased systems, connected under DEWA's Shams Dubai programme.",
+    "description": "Solar PV and battery storage installation for Dubai homes and businesses: free solar under a PPA or purchased systems, connected under DEWA's Shams Dubai programme.",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Unit 20, Prime Tower, Business Bay",
@@ -44,7 +44,7 @@
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "Why Dubai summer bills spike — and the three biggest levers to cut them",
+    "headline": "Why Dubai summer bills spike, and the three biggest levers to cut them",
     "description": "AC pushes summer usage into DEWA's higher bands as solar output peaks. Three levers cut the spike: efficiency, solar and load timing. See your numbers.",
     "datePublished": "2026-07-23",
     "dateModified": "2026-07-23",
@@ -62,7 +62,7 @@
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{DOMAIN}}/" },
       { "@type": "ListItem", "position": 2, "name": "Knowledge hub", "item": "{{DOMAIN}}/knowledge-hub/" },
-      { "@type": "ListItem", "position": 3, "name": "Why Dubai summer bills spike — and the three biggest levers to cut them", "item": "{{DOMAIN}}/knowledge-hub/summer-ac-electricity-costs-dubai/" }
+      { "@type": "ListItem", "position": 3, "name": "Why Dubai summer bills spike, and the three biggest levers to cut them", "item": "{{DOMAIN}}/knowledge-hub/summer-ac-electricity-costs-dubai/" }
     ]
   }
   </script>
@@ -70,11 +70,11 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- SHARED HEADER — keep byte-identical with every other page -->
+  <!-- SHARED HEADER: keep byte-identical with every other page -->
   <header class="site-header">
     <div class="wrap">
-      <a class="brand" href="/" aria-label="{{BRAND_NAME}} — home">
-        <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="20" r="12" fill="currentColor"/><path d="M32 38 v4 c0 9 -13 7 -13 18 M32 42 c0 9 13 7 13 18" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/></svg>
+      <a class="brand" href="/" aria-label="{{BRAND_NAME}} home page">
+        <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="20" r="11" fill="var(--clr-sun)" stroke="currentColor" stroke-width="4"/><path d="M32 38 v4 c0 9 -13 7 -13 18 M32 42 c0 9 13 7 13 18" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/></svg>
         {{BRAND_NAME}}
       </a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
@@ -106,7 +106,7 @@
         </nav>
 
         <div class="prose">
-          <h1>Why Dubai summer bills spike — and the three biggest levers to cut them</h1>
+          <h1>Why Dubai summer bills spike, and the three biggest levers to cut them</h1>
 
           <div class="article-meta">
             <span>Reviewed by the {{BRAND_NAME}} engineering team</span>
@@ -114,10 +114,10 @@
             <span>Bills & Savings</span>
           </div>
 
-          <p>Dubai summer electricity bills do not rise in a straight line — they jump. Air conditioning drives the jump, but the reason it hurts so much is DEWA's slab tariff: the more you use in a month, the more each extra unit costs. Summer AC pushes your consumption up into the higher bands at exactly the time of year the sun is strongest. That is painful if you are only buying power, and useful if you are generating it, because solar output peaks in the same months your bill does. There are three levers that genuinely move a summer bill: efficiency, solar offset and load timing. Here is how each works.</p>
+          <p>Dubai summer electricity bills do not rise in a straight line: they jump. Air conditioning drives the jump, but the reason it hurts so much is DEWA's slab tariff: the more you use in a month, the more each extra unit costs. Summer AC pushes your consumption up into the higher bands at exactly the time of year the sun is strongest. That is painful if you are only buying power, and useful if you are generating it, because solar output peaks in the same months your bill does. There are three levers that genuinely move a summer bill: efficiency, solar offset and load timing. Here is how each works.</p>
 
           <h2>How DEWA's bands turn heat into higher rates</h2>
-          <p>DEWA prices residential electricity in monthly consumption slabs, with a fuel surcharge — currently around <span data-tariff="fuel">6</span> fils per kWh — added on every unit:</p>
+          <p>DEWA prices residential electricity in monthly consumption slabs, with a fuel surcharge (currently around <span data-tariff="fuel">6</span> fils per kWh) added on every unit:</p>
           <div class="table-wrap">
             <table>
               <thead>
@@ -132,37 +132,37 @@
               </tbody>
             </table>
           </div>
-          <p>The key word is <em>marginal</em>. Crossing from Green into Yellow does not reprice your whole bill — but every additional unit above 2,000 kWh costs <span data-tariff="res-2">28</span> fils instead of <span data-tariff="res-1">23</span>, and a villa that pushes past 4,000 or 6,000 kWh pays <span data-tariff="res-3">32</span> or <span data-tariff="res-4">38</span> fils for the units at the top. Summer AC load is almost entirely top-band load. That is why a hot August can cost far more than double a mild February.</p>
-          <p>A worked example: a villa using 3,000 kWh in a summer month pays 2,000 units at <span data-tariff="res-1">23</span> fils (AED 460), 1,000 units at <span data-tariff="res-2">28</span> fils (AED 280), plus the <span data-tariff="fuel">6</span> fils fuel surcharge on all 3,000 units (AED 180) — about AED 920 for the month. The last 1,000 units cost more per unit than the first 2,000, and they are almost all cooling.</p>
-          <p><em>Figures are estimates, not a quote — final numbers depend on a site survey and DEWA approval.</em></p>
+          <p>The key word is <em>marginal</em>. Crossing from Green into Yellow does not reprice your whole bill, but every additional unit above 2,000 kWh costs <span data-tariff="res-2">28</span> fils instead of <span data-tariff="res-1">23</span>, and a villa that pushes past 4,000 or 6,000 kWh pays <span data-tariff="res-3">32</span> or <span data-tariff="res-4">38</span> fils for the units at the top. Summer AC load is almost entirely top-band load. That is why a hot August can cost far more than double a mild February.</p>
+          <p>A worked example: a villa using 3,000 kWh in a summer month pays 2,000 units at <span data-tariff="res-1">23</span> fils (AED 460), 1,000 units at <span data-tariff="res-2">28</span> fils (AED 280), plus the <span data-tariff="fuel">6</span> fils fuel surcharge on all 3,000 units (AED 180), a total of about AED 920 for the month. The last 1,000 units cost more per unit than the first 2,000, and they are almost all cooling.</p>
+          <p><em>Figures are estimates, not a quote. Final numbers depend on a site survey and DEWA approval.</em></p>
           <p>Businesses face the same mechanics with a two-slab structure: <span data-tariff="com-1">23</span> fils up to 10,000 kWh a month and <span data-tariff="com-2">38</span> fils above, plus the fuel surcharge. For an air-conditioned office or shop, summer cooling lands squarely in the <span data-tariff="com-2">38</span> fils slab.</p>
 
           <h2>Start by reading your own curve</h2>
-          <p>Before pulling any lever, look at twelve months of consumption in your DEWA account. Two numbers matter. The first is your peak summer month in kWh, which tells you which band your most expensive units sit in. The second is the gap between your summer peak and your winter trough — that gap is almost entirely cooling, and it is the part of the bill the three levers attack. A villa that swings from 1,800 kWh in January to 4,500 kWh in August is buying its marginal summer units at <span data-tariff="res-3">32</span> fils plus surcharge; a flat-profile home has a different problem and a different fix. Ten minutes with your bill history turns the rest of this article from general advice into a plan.</p>
+          <p>Before pulling any lever, look at twelve months of consumption in your DEWA account. Two numbers matter. The first is your peak summer month in kWh, which tells you which band your most expensive units sit in. The second is the gap between your summer peak and your winter trough. That gap is almost entirely cooling, and it is the part of the bill the three levers attack. A villa that swings from 1,800 kWh in January to 4,500 kWh in August is buying its marginal summer units at <span data-tariff="res-3">32</span> fils plus surcharge; a flat-profile home has a different problem and a different fix. Ten minutes with your bill history turns the rest of this article from general advice into a plan.</p>
 
-          <h2>Lever 1: efficiency — make the AC work less</h2>
+          <h2>Lever 1: efficiency (make the AC work less)</h2>
           <p>The cheapest kWh is the one you never use. Before spending anything on hardware, tighten the basics:</p>
           <ul>
-            <li>Raise setpoints modestly and use programmable or smart thermostats — cooling an empty villa to 20°C all afternoon is the most common waste we see.</li>
+            <li>Raise setpoints modestly and use programmable or smart thermostats; cooling an empty villa to 20°C all afternoon is the most common waste we see.</li>
             <li>Service AC units before summer: clean filters and coils, check refrigerant. A struggling compressor draws more power for less cooling.</li>
             <li>Cut solar gain: shade west-facing glass, close curtains during the afternoon, and check door seals and roller-shutter gaps in commercial units.</li>
             <li>Replace the worst offenders. An old, oversized or under-maintained AC unit can dominate a bill on its own.</li>
           </ul>
-          <p>Efficiency shaves the top of the curve, but it cannot remove the fundamental driver — Dubai summers demand cooling, and cooling demands kilowatt-hours.</p>
+          <p>Efficiency shaves the top of the curve, but it cannot remove the fundamental driver: Dubai summers demand cooling, and cooling demands kilowatt-hours.</p>
 
-          <h2>Lever 2: solar — generate through the peak</h2>
-          <p>This is the structural fix, and the geometry is on your side. The months when your consumption climbs into the Orange and Red bands are the months of longest, strongest sun. Because solar displaces your most expensive units first — the top-band units — every generated kWh in summer is worth more than the same kWh in winter. A system sized against your annual usage flattens the summer spike specifically, not just the average bill.</p>
+          <h2>Lever 2: solar (generate through the peak)</h2>
+          <p>This is the structural fix, and the geometry is on your side. The months when your consumption climbs into the Orange and Red bands are the months of longest, strongest sun. Because solar displaces your most expensive units first (the top-band units), every generated kWh in summer is worth more than the same kWh in winter. A system sized against your annual usage flattens the summer spike specifically, not just the average bill.</p>
           <p>There are two ways to get there, and neither requires waiting: <a href="/free-solar-ppa/">free solar under a PPA with AED 0 upfront</a>, where you simply buy the roof's output at a discount to DEWA, or <a href="/buy-solar/">buying the system</a> and keeping the whole saving. The <a href="/calculator/">savings calculator shows both routes against your own bill</a> in about a minute.</p>
 
-          <h2>Lever 3: load timing — run heavy loads when the sun does</h2>
-          <p>DEWA's residential bands are monthly totals, not time-of-use rates, so shifting a load from evening to noon does not change its band on its own. Timing starts to matter once you have solar on the roof. Running pool pumps, washing machines, dishwashers and EV charging during daylight means those loads consume your own generation directly, keeping the self-consumption share high and the metering simple. For businesses, scheduling flexible processes into the solar window does the same job at larger scale — and where evening or peak loads cannot move, that is a storage conversation, which we cover honestly in <a href="/knowledge-hub/battery-storage-worth-it-dubai/">do you need a battery with net metering</a>.</p>
+          <h2>Lever 3: load timing (run heavy loads when the sun does)</h2>
+          <p>DEWA's residential bands are monthly totals, not time-of-use rates, so shifting a load from evening to noon does not change its band on its own. Timing starts to matter once you have solar on the roof. Running pool pumps, washing machines, dishwashers and EV charging during daylight means those loads consume your own generation directly, keeping the self-consumption share high and the metering simple. For businesses, scheduling flexible processes into the solar window does the same job at larger scale. Where evening or peak loads cannot move, that is a storage conversation, which we cover honestly in <a href="/knowledge-hub/battery-storage-worth-it-dubai/">do you need a battery with net metering</a>.</p>
 
           <h2>Pull the three levers in order</h2>
           <p>Efficiency first, because it is cheap and shrinks the system you need. Solar second, because it is the only lever that removes top-band units at scale, under DEWA's Shams Dubai programme with net metering crediting any surplus. Timing third, to squeeze the most value from the system once it is on the roof. Homes and businesses follow the same order; only the load lists differ. Done together, the summer spike stops being a season you dread on the first bill of September.</p>
 
           <div class="article-cta">
             <h2>Put your own numbers on this</h2>
-            <p>Sixty seconds with the calculator shows both routes — free solar under a PPA and buying outright — side by side, using your bill. Estimates, not quotes; the free survey firms them up.</p>
+            <p>Sixty seconds with the calculator shows both routes, free solar under a PPA and buying outright, side by side using your bill. Estimates, not quotes; the free survey firms them up.</p>
             <div class="btn-row">
               <a class="btn btn-primary" href="/#estimate">Get my free savings estimate</a>
               <a class="btn btn-ghost" href="/calculator/">Run the savings calculator</a>
@@ -173,12 +173,12 @@
     </article>
   </main>
 
-  <!-- SHARED FOOTER — keep byte-identical with every other page -->
+  <!-- SHARED FOOTER: keep byte-identical with every other page -->
   <footer class="site-footer">
     <div class="wrap">
       <div class="footer-grid">
         <div>
-          <p class="footer-brand"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="20" r="12" fill="currentColor"/><path d="M32 38 v4 c0 9 -13 7 -13 18 M32 42 c0 9 13 7 13 18" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/></svg>{{BRAND_NAME}}</p>
+          <p class="footer-brand"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="20" r="11" fill="var(--clr-sun)" stroke="currentColor" stroke-width="4"/><path d="M32 38 v4 c0 9 -13 7 -13 18 M32 42 c0 9 13 7 13 18" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/></svg>{{BRAND_NAME}}</p>
           <p>Solar PV and battery storage for Dubai homes and businesses.<br>Unit 20, Prime Tower, Business Bay, Dubai, UAE.</p>
           <p><a href="mailto:garethsomers@outlook.com">garethsomers@outlook.com</a></p>
           <p>We work by web form and email.</p>
