@@ -1,0 +1,14 @@
+# {{BRAND_NAME}} — Apache config (Hostinger serves static sites via Apache)
+ErrorDocument 404 /404.html
+
+# Serve UTF-8
+AddDefaultCharset utf-8
+
+# Basic caching for static assets
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 7 days"
+  ExpiresByType application/javascript "access plus 7 days"
+  ExpiresByType image/svg+xml "access plus 30 days"
+  ExpiresByType image/png "access plus 30 days"
+</IfModule>

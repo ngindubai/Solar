@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<!--
+  ============================================================================
+  KNOWLEDGE HUB ARTICLE TEMPLATE — {{BRAND_NAME}}
+  ============================================================================
+  HOW TO USE (automated SEO programme, read carefully):
+
+  1. Copy this file to /knowledge-hub/<slug>/index.html
+     Slug rules (SEO-RULES.md #14): lowercase-hyphenated, 3–6 words,
+     no dates, no stop-words. Example: dewa-bill-bands-explained
+  2. Replace every [[TOKEN]] below. Do not leave any [[ ]] in the output.
+  3. Category must be EXACTLY one of (SEO-RULES.md #19):
+     Bills & Savings · Free Solar (PPA) · Buying Solar · Battery Storage ·
+     Business Solar · Rules & DEWA
+  4. In the SAME change: add the article to sitemap.xml (with <lastmod>)
+     and link it from /knowledge-hub/index.html. (CLAUDE.md rule 10.)
+  5. BINDING RULES — re-read before publishing:
+     - SEO-RULES.md #4: no near-duplicate pages. If an article already
+       targets the same primary query, UPDATE it instead.
+     - SEO-RULES.md #5: no location-permutation doorway pages.
+     - SEO-RULES.md #6: no keyword stuffing; write naturally.
+     - SEO-RULES.md #19: exactly one category; breadcrumb; 2–4 contextual
+       internal links to /free-solar-ppa/, /buy-solar/ or /calculator/
+       with varied, descriptive anchors.
+     - SEO-RULES.md #20: the standard CTA block at the end stays.
+     - CLAUDE.md rule 1: NO phone numbers, ever.
+     - CLAUDE.md rule 4: no fabricated statistics, testimonials or claims.
+     - CLAUDE.md rule 5: any savings figure sits near the estimate
+       disclaimer.
+     - CLAUDE.md rule 6: tariff figures come from CONFIG in
+       /assets/js/calculator.js — wrap them in <span data-tariff="…">
+       so they re-render if CONFIG changes.
+  6. Word count target: 900–1,400 words of genuinely useful, Dubai-specific
+     content. Include at least one element only we can provide: a worked
+     AED example from CONFIG constants, a band-by-band table, or a
+     Dubai-specific checklist. (SEO-RULES.md #3.)
+  ============================================================================
+-->
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- [[TITLE]]: ≤60 chars, front-loaded promise, pattern "Promise | {{BRAND_NAME}}" -->
+  <title>[[TITLE]] | {{BRAND_NAME}}</title>
+  <!-- [[META_DESCRIPTION]]: ≤155 chars, written as answer + CTA -->
+  <meta name="description" content="[[META_DESCRIPTION]]">
+  <!-- [[SLUG]]: the folder name, e.g. dewa-bill-bands-explained -->
+  <link rel="canonical" href="{{DOMAIN}}/knowledge-hub/[[SLUG]]/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="[[TITLE]] | {{BRAND_NAME}}">
+  <meta property="og:description" content="[[META_DESCRIPTION]]">
+  <meta property="og:url" content="{{DOMAIN}}/knowledge-hub/[[SLUG]]/">
+  <meta property="og:image" content="{{DOMAIN}}/assets/img/og-default.png">
+  <meta property="og:site_name" content="{{BRAND_NAME}}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="[[TITLE]] | {{BRAND_NAME}}">
+  <meta name="twitter:description" content="[[META_DESCRIPTION]]">
+  <meta name="twitter:image" content="{{DOMAIN}}/assets/img/og-default.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script defer src="/assets/js/calculator.js"></script>
+  <script defer src="/assets/js/main.js"></script>
+  <!-- ANALYTICS SLOT — add approved analytics snippet here; nothing live by default -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "{{DOMAIN}}/#organization",
+    "name": "{{BRAND_NAME}}",
+    "url": "{{DOMAIN}}/",
+    "email": "garethsomers@outlook.com",
+    "description": "Solar PV and battery storage installation for Dubai homes and businesses — free solar under a PPA or purchased systems, connected under DEWA's Shams Dubai programme.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Unit 20, Prime Tower, Business Bay",
+      "addressLocality": "Dubai",
+      "addressCountry": "AE"
+    },
+    "geo": { "@type": "GeoCoordinates", "latitude": 25.186, "longitude": 55.265 },
+    "areaServed": { "@type": "City", "name": "Dubai" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "[[H1_TEXT]]",
+    "description": "[[META_DESCRIPTION]]",
+    "datePublished": "[[DATE_PUBLISHED_ISO]]",
+    "dateModified": "[[DATE_MODIFIED_ISO]]",
+    "author": { "@type": "Organization", "name": "{{BRAND_NAME}}" },
+    "publisher": { "@id": "{{DOMAIN}}/#organization" },
+    "mainEntityOfPage": "{{DOMAIN}}/knowledge-hub/[[SLUG]]/",
+    "articleSection": "[[CATEGORY]]",
+    "image": "{{DOMAIN}}/assets/img/og-default.png"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{DOMAIN}}/" },
+      { "@type": "ListItem", "position": 2, "name": "Knowledge hub", "item": "{{DOMAIN}}/knowledge-hub/" },
+      { "@type": "ListItem", "position": 3, "name": "[[H1_TEXT]]", "item": "{{DOMAIN}}/knowledge-hub/[[SLUG]]/" }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- SHARED HEADER — keep byte-identical with every other page -->
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="/" aria-label="{{BRAND_NAME}} — home">
+        <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="20" r="12" fill="currentColor"/><path d="M32 38 v4 c0 9 -13 7 -13 18 M32 42 c0 9 13 7 13 18" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/></svg>
+        {{BRAND_NAME}}
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav id="site-nav" class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="/free-solar-ppa/">Free Solar</a></li>
+          <li><a href="/buy-solar/">Buy Solar</a></li>
+          <li><a href="/battery-storage/">Battery Storage</a></li>
+          <li><a href="/calculator/">Calculator</a></li>
+          <li><a href="/homeowners/">For Homes</a></li>
+          <li><a href="/business/">For Business</a></li>
+          <li><a href="/knowledge-hub/">Knowledge Hub</a></li>
+          <li><a href="/contact/">Contact</a></li>
+          <li><a class="nav-cta" href="/#estimate">Get my free estimate</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <article class="section" style="padding-top:2.5rem">
+      <div class="wrap">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li><a href="/knowledge-hub/">Knowledge hub</a></li>
+            <!-- [[CATEGORY]] as plain text, matching the fixed category list -->
+            <li aria-current="page">[[CATEGORY]]</li>
+          </ol>
+        </nav>
+
+        <div class="prose">
+          <!-- Exactly ONE h1. [[H1_TEXT]] should closely match, not
+               necessarily equal, [[TITLE]] -->
+          <h1>[[H1_TEXT]]</h1>
+
+          <div class="article-meta">
+            <!-- Visible dates + byline are REQUIRED (SEO-RULES.md #2).
+                 [[DATE_MODIFIED_HUMAN]] e.g. "21 July 2026" -->
+            <span>Reviewed by the {{BRAND_NAME}} engineering team</span>
+            <span>Updated <time datetime="[[DATE_MODIFIED_ISO]]">[[DATE_MODIFIED_HUMAN]]</time></span>
+            <span>[[CATEGORY]]</span>
+          </div>
+
+          <!-- =============================================================
+               [[BODY]]
+               900–1,400 words. Structure:
+               - Opening paragraphs: answer the query within the first
+                 100 words; target phrase appears naturally once.
+               - h2 sections (never skip heading levels; h3 only under h2).
+               - At least ONE of: worked AED example (CONFIG-derived, wrapped
+                 in <span data-tariff="…"> where it quotes a tariff),
+                 band-by-band table (use <div class="table-wrap"><table>…),
+                 or a Dubai-specific checklist (<ul>).
+               - 2–4 contextual internal links to /free-solar-ppa/,
+                 /buy-solar/ or /calculator/ with DESCRIPTIVE anchors,
+                 placed where they genuinely help.
+               - Any savings figure must sit near this disclaimer line
+                 (keep it verbatim):
+                 <p><em>Figures are estimates, not a quote — final numbers
+                 depend on a site survey and DEWA approval.</em></p>
+               ============================================================= -->
+          [[BODY]]
+
+          <!-- STANDARD CTA BLOCK — required on every article, keep intact
+               (SEO-RULES.md #20). Do not add a third form; link to the
+               existing hero form and calculator. -->
+          <div class="article-cta">
+            <h2>Put your own numbers on this</h2>
+            <p>Sixty seconds with the calculator shows both routes — free solar under a PPA and buying outright — side by side, using your bill. Estimates, not quotes; the free survey firms them up.</p>
+            <div class="btn-row">
+              <a class="btn btn-primary" href="/#estimate">Get my free savings estimate</a>
+              <a class="btn btn-ghost" href="/calculator/">Run the savings calculator</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <!-- SHARED FOOTER — keep byte-identical with every other page -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <p class="footer-brand"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="20" r="12" fill="currentColor"/><path d="M32 38 v4 c0 9 -13 7 -13 18 M32 42 c0 9 13 7 13 18" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/></svg>{{BRAND_NAME}}</p>
+          <p>Solar PV and battery storage for Dubai homes and businesses.<br>Unit 20, Prime Tower, Business Bay, Dubai, UAE.</p>
+          <p><a href="mailto:garethsomers@outlook.com">garethsomers@outlook.com</a></p>
+          <p>We work by web form and email.</p>
+        </div>
+        <div>
+          <h4>Go solar</h4>
+          <ul>
+            <li><a href="/free-solar-ppa/">Free Solar (PPA)</a></li>
+            <li><a href="/buy-solar/">Buy a system</a></li>
+            <li><a href="/battery-storage/">Battery storage</a></li>
+            <li><a href="/calculator/">Savings calculator</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="/homeowners/">For homeowners</a></li>
+            <li><a href="/business/">For business</a></li>
+            <li><a href="/knowledge-hub/">Knowledge hub</a></li>
+            <li><a href="/about/">About us</a></li>
+            <li><a href="/contact/">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-legal">
+        <p>Rooftop solar in Dubai connects to the grid under DEWA's Shams Dubai initiative and must be installed by an enrolled contractor.</p>
+        <ul>
+          <li><a href="/privacy-policy/">Privacy policy</a></li>
+          <li><a href="/terms/">Terms</a></li>
+        </ul>
+        <p>© {{BRAND_NAME}}, Dubai</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="sticky-cta">
+    <a class="btn" href="/#estimate">Get my free estimate</a>
+  </div>
+</body>
+</html>
