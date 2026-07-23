@@ -15,13 +15,19 @@ static host (Hostinger, Netlify, Vercel, Cloudflare Pages) and go live.
    `assets/img/og-default.png` (1200×630). Meta tags already reference the
    `.png`.
 3. **Activate FormSubmit**: the first live form submission triggers an
-   activation email to `garethsomers@outlook.com` — it must be clicked once
+   activation email to `garethsomers@outlook.com`. It must be clicked once
    after deploy or leads will not arrive. Recommended afterwards: swap the
    raw address in every form `action` (and in
-   `assets/js/calculator.js` → `FORM_ENDPOINT`) for the random-string
-   endpoint FormSubmit gives you, to prevent address scraping. One-line
-   change per form.
+   `assets/js/calculator.js`, the `FORM_ENDPOINT` constant) for the
+   random-string endpoint FormSubmit gives you, to prevent address
+   scraping. One-line change per form.
 4. Update `sitemap.xml` `<lastmod>` dates if you edit pages.
+5. Cache-busting: `main.css`, `calculator.js` and `main.js` are linked
+   with a `?v=N` version query (currently `?v=2`). Hosts and browsers
+   cache these files for days, so after editing any of the three, bump
+   the number in every page's `<link>`/`<script>` tag (find-and-replace
+   `?v=2` to `?v=3`). Skipping this makes visitors keep the old file and
+   is the usual reason a change "did not show up" after deploy.
 
 ## Editing rules
 
