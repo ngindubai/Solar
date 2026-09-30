@@ -17,9 +17,9 @@
   <meta name="twitter:description" content="Cut your DEWA bill with rooftop solar, free under a PPA or owned outright. For Dubai homes and businesses.">
   <meta name="twitter:image" content="{{DOMAIN}}/assets/img/og-default.png">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="stylesheet" href="/assets/css/main.css?v=2">
-  <script defer src="/assets/js/calculator.js?v=2"></script>
-  <script defer src="/assets/js/main.js?v=2"></script>
+  <link rel="stylesheet" href="/assets/css/main.css?v=3">
+  <script defer src="/assets/js/calculator.js?v=3"></script>
+  <script defer src="/assets/js/main.js?v=3"></script>
   <!-- ANALYTICS SLOT: add approved analytics snippet here; nothing live by default -->
   <script type="application/ld+json">
   {
@@ -166,11 +166,8 @@
           <div class="form-card" id="estimate">
             <h2>Get my free savings estimate</h2>
             <p class="form-note">Tell us where the bill hurts. An engineer replies by email. No calls, no pressure.</p>
-            <form action="https://formsubmit.co/garethsomers@outlook.com" method="POST">
-              <input type="hidden" name="_subject" value="New solar lead: Homepage hero">
-              <input type="hidden" name="_template" value="table">
-              <input type="hidden" name="_captcha" value="false">
-              <input type="hidden" name="_next" value="{{DOMAIN}}/thank-you/">
+            <form action="/lead.php" method="post">
+              <input type="hidden" name="subject" value="New solar lead: Homepage hero">
               <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
               <div class="field">
                 <label for="hero-name">Name</label>

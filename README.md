@@ -1,8 +1,9 @@
 # {{BRAND_NAME}} — Dubai Solar & Battery Storage Website
 
 Static lead-generation site. No build step, no dependencies — plain HTML,
-one stylesheet, two small vanilla JS files. Drop the repo root onto any
-static host (Hostinger, Netlify, Vercel, Cloudflare Pages) and go live.
+one stylesheet, two small vanilla JS files, plus one PHP file (`lead.php`)
+that delivers the forms. Drop the repo root onto any host with PHP
+(Hostinger) and go live.
 
 ## Deploy checklist (the only manual steps)
 
@@ -10,23 +11,26 @@ static host (Hostinger, Netlify, Vercel, Cloudflare Pages) and go live.
    - `{{BRAND_NAME}}` → the trading name of the business
    - `{{DOMAIN}}` → the production origin, e.g. `https://example.ae`
      (no trailing slash — it is used as a prefix in canonicals, sitemap,
-     schema, OG tags and FormSubmit `_next` redirects)
+     schema and OG tags). The replace also sets the brand in `lead.php`.
 2. **Export the OG image**: render `assets/img/og-default.svg` to
    `assets/img/og-default.png` (1200×630). Meta tags already reference the
    `.png`.
-3. **Activate FormSubmit**: the first live form submission triggers an
-   activation email to `garethsomers@outlook.com`. It must be clicked once
-   after deploy or leads will not arrive. Recommended afterwards: swap the
-   raw address in every form `action` (and in
-   `assets/js/calculator.js`, the `FORM_ENDPOINT` constant) for the
-   random-string endpoint FormSubmit gives you, to prevent address
-   scraping. One-line change per form.
+3. **Lead delivery (`/lead.php`)**: every form posts to `lead.php` at the
+   repo root, which emails the lead to `garethsomers@outlook.com` with the
+   host's PHP `mail()`, logs it outside the web root (`../solar-leads/`)
+   and redirects to `/thank-you/` only after the email was accepted. At
+   launch, change `from` in `LEAD_CONFIG` (top of `lead.php`) from the
+   temporary `noreply@firswoodproperties.ae` to `noreply@` the site's own
+   domain; that domain needs a DMARC policy of `p=none` (or no DMARC record)
+   and must be on Gareth's Outlook Safe senders list. Then send one test
+   from each form (homepage, contact, calculator). Needs PHP hosting
+   (Hostinger has it); a pure static host cannot run it.
 4. Update `sitemap.xml` `<lastmod>` dates if you edit pages.
 5. Cache-busting: `main.css`, `calculator.js` and `main.js` are linked
-   with a `?v=N` version query (currently `?v=2`). Hosts and browsers
+   with a `?v=N` version query (currently `?v=3`). Hosts and browsers
    cache these files for days, so after editing any of the three, bump
    the number in every page's `<link>`/`<script>` tag (find-and-replace
-   `?v=2` to `?v=3`). Skipping this makes visitors keep the old file and
+   `?v=3` to `?v=4`). Skipping this makes visitors keep the old file and
    is the usual reason a change "did not show up" after deploy.
 
 ## Editing rules
@@ -63,6 +67,7 @@ policy) before changing anything. Highlights:
 - `assets/css/main.css` — all design tokens as CSS custom properties.
 - `assets/js/main.js` — nav, sticky CTA, reveals, journey-line animation.
 - `assets/js/calculator.js` — CONFIG + band engine + calculator UI.
+- `lead.php` — same-origin lead handler every form posts to.
 
 ## Notes
 

@@ -66,7 +66,7 @@
      Client-side form validation with inline messages
      ------------------------------------------------------------------ */
   function wireFormValidation(scope) {
-    (scope || document).querySelectorAll("form[action*='formsubmit']").forEach(function (form) {
+    (scope || document).querySelectorAll("form[action='/lead.php']").forEach(function (form) {
       if (form.dataset.validated) return;
       form.dataset.validated = "true";
       form.setAttribute("novalidate", "");

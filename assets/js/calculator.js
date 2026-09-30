@@ -180,7 +180,9 @@ function estimateFromMonthlyKWh(kWhMonth, slabs, capexPerKWp, roofCapKWp) {
 /* --------------------------------------------------------------------------
    UI
    -------------------------------------------------------------------------- */
-const FORM_ENDPOINT = "https://formsubmit.co/garethsomers@outlook.com";
+// Same-origin lead handler at the web root (repo root). Plain POST; lead.php
+// emails the lead and 303-redirects to /thank-you/ only after mail() accepted it.
+const FORM_ENDPOINT = "/lead.php";
 
 /** Options for the bill picker: 50-AED increments between min and max. */
 function billOptionsHTML(min, max) {
@@ -274,13 +276,10 @@ function leadFormHTML(uid, summary) {
   <div class="form-card">
     <h3>Get this estimate verified with a free site survey</h3>
     <p class="form-note">Leave your details and an engineer will email your tailored figures. No calls; we work by email.</p>
-    <form action="${FORM_ENDPOINT}" method="POST">
-      <input type="hidden" name="_subject" value="New solar lead - Calculator estimate">
-      <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="{{DOMAIN}}/thank-you/">
+    <form action="${FORM_ENDPOINT}" method="post">
+      <input type="hidden" name="subject" value="New solar lead - Calculator estimate">
       <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-      <input type="hidden" name="_summary" value="${summary.replace(/"/g, "&quot;")}">
+      <input type="hidden" name="estimate_details" value="${summary.replace(/"/g, "&quot;")}">
       <div class="field">
         <label for="${uid}-lead-name">Name</label>
         <input id="${uid}-lead-name" name="name" type="text" required autocomplete="name">

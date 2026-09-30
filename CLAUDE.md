@@ -8,10 +8,12 @@ Tower, Business Bay, Dubai. Contact is web forms + email only.
 ## Hard rules — never violate
 1. NO PHONE NUMBER. Never add a phone number, tel: link, WhatsApp link or
    "call us" copy anywhere, including schema.org markup.
-2. Lead forms POST to FormSubmit → garethsomers@outlook.com. Never change the
-   endpoint, never add fields that collect more than name, email, and the
-   fields already specified. Every form keeps its `_honey` honeypot and
-   `_next` redirect to /thank-you/.
+2. Lead forms POST to `/lead.php` (the same-origin PHP handler at the repo
+   root) → garethsomers@outlook.com. Never point a form anywhere else, never
+   add fields that collect more than name, email, and the fields already
+   specified. Every form keeps its `_honey` honeypot; lead.php redirects to
+   /thank-you/ only after the email was accepted. (Changed 1 Oct 2026 from
+   FormSubmit, which stopped accepting submissions.)
 3. Dual audience parity: any change that adds residential-facing content must
    add or preserve the commercial equivalent, and vice versa.
 4. Never fabricate: no invented testimonials, review counts, star ratings,
